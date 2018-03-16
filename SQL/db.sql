@@ -27,6 +27,7 @@ CREATE USER vend_machine WITH PASSWORD 'vend_machine';
 
 CREATE DATABASE smart_vend;
 
+\c smart_vend;
 
 -----------
 -- ITEMS --
