@@ -54,10 +54,10 @@ def main():
                     stock_id += 1
 
     # Create Payment Types
-    '''with open(PAYMENT_TYPES, 'w') as f:
+    with open(PAYMENT_TYPES, 'w') as f:
         f.write('1,cash\n')
         f.write('2,credit\n')
-        f.write('3,nfc\n')'''
+        f.write('3,nfc\n')
 
     # Create Purchases
    # startDate = datetime.datetime(2018, 4, 20, ,00)
