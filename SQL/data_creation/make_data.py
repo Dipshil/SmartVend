@@ -1,5 +1,6 @@
 from os.path import isfile
 from filepaths import *
+from timestamp_generator import random_date
 import random
 
 def main():
@@ -8,7 +9,7 @@ def main():
     with open(ITEM_TYPES, 'w') as f:
         f.write('1,drink\n')
         f.write('2,chips\n')
-        f.write('2,bar\n')
+        f.write('3,bar\n')
 
     # Create Items
     with open(ITEMS, 'w') as f:
@@ -47,18 +48,20 @@ def main():
     with open(MACHINE_STOCKS, 'w') as f:
         stock_id = 1
         for machine_id in range(1, 9):
-            for item_id in range(1, 14):
+            for item_id in range(1, 15):
                 for number_items in range(random.randint(10, 100)):
                     f.write('%s,%s,%s\n' %(stock_id, machine_id, item_id))
                     stock_id += 1
 
     # Create Payment Types
-    with open(PAYMENT_TYPES, 'w') as f:
+    '''with open(PAYMENT_TYPES, 'w') as f:
         f.write('1,cash\n')
         f.write('2,credit\n')
-        f.write('3,nfc\n')
+        f.write('3,nfc\n')'''
 
     # Create Purchases
+   # startDate = datetime.datetime(2018, 4, 20, ,00)
+
 
 
 if __name__ == '__main__':
