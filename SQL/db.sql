@@ -119,3 +119,6 @@ GRANT SELECT ON TABLE logs to vend_analytics;
 \copy item FROM './simulated_data/items.csv' DELIMITER ',' CSV;
 \copy machine FROM './simulated_data/machines.csv' DELIMITER ',' CSV;
 \copy payment_type FROM './simulated_data/payment_types.csv' DELIMITER ',' CSV;
+\copy machine_stock FROM './simulated_data/machine_stocks.csv' DELIMITER ',' CSV;
+
+

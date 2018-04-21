@@ -1,5 +1,6 @@
 from os.path import isfile
 from filepaths import *
+import random
 
 def main():
 
@@ -43,6 +44,13 @@ def main():
         f.write('8,Thornton 1st Floor\n')
 
     # Create Machine Stocks
+    with open(MACHINE_STOCKS, 'w') as f:
+        stock_id = 1
+        for machine_id in range(1, 9):
+            for item_id in range(1, 14):
+                for number_items in range(random.randint(10, 100)):
+                    f.write('%s,%s,%s\n' %(stock_id, machine_id, item_id))
+                    stock_id += 1
 
     # Create Payment Types
     with open(PAYMENT_TYPES, 'w') as f:
