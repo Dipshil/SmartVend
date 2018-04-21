@@ -69,17 +69,17 @@ def main():
 
     # Create Purchases
     with open(PURCHASES, 'w') as f:
-        for date in range(1, 32):
             for machine_id in range(1, NUM_VENDING_MACHINES+1):
                 for item_id in range(1, 15):
                     mu = random.randint(-2, 2)
                     sigma = random.uniform(0, 2)
-                    for number_items in range(random.randint(1, 5)):
-                        start = "2018/03/%s 00:00" %date
-                        end = "2018/03/%s 23:59" %date
-                        timestamp = randomDate(start, end, random.gauss(mu, sigma))
-                        payment_type = random.randint(1,3)
-                        f.write('%s,%s,%s,%s\n' %(item_id, machine_id, timestamp, payment_type))
+                    for date in range(1, 32):
+                        for number_items in range(random.randint(1, 5)):
+                            start = "2018/03/%s 00:00" %date
+                            end = "2018/03/%s 23:59" %date
+                            timestamp = randomDate(start, end, random.gauss(mu, sigma))
+                            payment_type = random.randint(1,3)
+                            f.write('%s,%s,%s,%s\n' %(item_id, machine_id, timestamp, payment_type))
 
 
 
