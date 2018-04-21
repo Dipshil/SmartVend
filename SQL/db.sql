@@ -61,11 +61,11 @@ CREATE TABLE purchase (
 	item_id SERIAL,
 	machine_id SERIAL,
 	timestamp TIMESTAMP,
-	payment_type_id SERIAL
+	payment_type_id SERIAL 
 );
 
 CREATE TABLE payment_type (
-	id SERIAL,
+	id SERIAL PRIMARY KEY,
 	payment_type_name VARCHAR(40)
 );
 
@@ -121,5 +121,6 @@ GRANT SELECT ON TABLE logs to vend_analytics;
 \copy machine(location)  FROM './simulated_data/machines.csv' DELIMITER ',' CSV;
 \copy payment_type(payment_type_name) FROM './simulated_data/payment_types.csv' DELIMITER ',' CSV;
 \copy machine_stock(machine_id, item_id) FROM './simulated_data/machine_stocks.csv' DELIMITER ',' CSV;
+\copy purchase(item_id, machine_id, timestamp, payment_type_id) FROM './simulated_data/purchases.csv' DELIMITER ',' CSV;
 
 
