@@ -47,7 +47,7 @@ CREATE TABLE machine (
 );
 
 CREATE TABLE machine_stock (
-	id SERIAL,
+	id SERIAL PRIMARY KEY,
 	machine_id SERIAL,
 	item_id SERIAL
 );
@@ -100,6 +100,7 @@ CREATE VIEW logs AS (
 -- PRIVILEGES --
 ----------------
 
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO vend_admin;
 GRANT ALL PRIVILEGES ON TABLE item to vend_admin;
 GRANT ALL PRIVILEGES ON TABLE item_type to vend_admin;
 GRANT ALL PRIVILEGES ON TABLE machine to vend_admin;
@@ -115,10 +116,10 @@ GRANT SELECT ON TABLE logs to vend_analytics;
 -- LOAD DATA --
 ---------------
 
-\copy item_type FROM './simulated_data/item_types.csv' DELIMITER ',' CSV;
-\copy item FROM './simulated_data/items.csv' DELIMITER ',' CSV;
-\copy machine FROM './simulated_data/machines.csv' DELIMITER ',' CSV;
-\copy payment_type FROM './simulated_data/payment_types.csv' DELIMITER ',' CSV;
-\copy machine_stock FROM './simulated_data/machine_stocks.csv' DELIMITER ',' CSV;
+\copy item_type(item_type_name) FROM './simulated_data/item_types.csv' DELIMITER ',' CSV;
+\copy item(item_name, item_type_id, price) FROM './simulated_data/items.csv' DELIMITER ',' CSV;
+\copy machine(location)  FROM './simulated_data/machines.csv' DELIMITER ',' CSV;
+\copy payment_type(payment_type_name) FROM './simulated_data/payment_types.csv' DELIMITER ',' CSV;
+\copy machine_stock(machine_id, item_id) FROM './simulated_data/machine_stocks.csv' DELIMITER ',' CSV;
 
 
