@@ -1,0 +1,6 @@
+ITEM_TYPES = '../simulated_data/item_types.csv'
+ITEMS = '../simulated_data/items.csv'
+MACHINES = '../simulated_data/machines.csv'
+MACHINE_STOCKS = '../simulated_data/machine_stocks.csv'
+PAYMENT_TYPES = '../simulated_data/payment_types.csv'
+PURCHASES = '../simulated_data/purchases.csv'

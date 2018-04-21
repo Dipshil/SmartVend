@@ -1,13 +1,4 @@
-DROP VIEW logs;
-DROP TABLE item;
-DROP TABLE item_type;
-DROP TABLE machine;
-DROP TABLE machine_stock;
-DROP TABLE purchase;
-DROP TABLE payment_type;
-
 DROP DATABASE smart_vend;
-
 DROP USER vend_admin;
 DROP USER vend_analytics;
 DROP USER vend_machine;
@@ -109,7 +100,22 @@ CREATE VIEW logs AS (
 -- PRIVILEGES --
 ----------------
 
-GRANT ALL PRIVILEGES ON DATABASE smart_vend TO vend_admin;
+GRANT ALL PRIVILEGES ON TABLE item to vend_admin;
+GRANT ALL PRIVILEGES ON TABLE item_type to vend_admin;
+GRANT ALL PRIVILEGES ON TABLE machine to vend_admin;
+GRANT ALL PRIVILEGES ON TABLE machine_stock to vend_admin;
+GRANT ALL PRIVILEGES ON TABLE purchase to vend_admin;
+GRANT ALL PRIVILEGES ON TABLE payment_type to vend_admin;
+GRANT ALL PRIVILEGES ON TABLE logs to vend_admin;
 GRANT INSERT ON TABLE machine_stock TO vend_machine;
 GRANT INSERT ON TABLE purchase TO vend_machine;
 GRANT SELECT ON TABLE logs to vend_analytics;
+
+---------------
+-- LOAD DATA --
+---------------
+
+\copy item_type FROM './simulated_data/item_types.csv' DELIMITER ',' CSV;
+\copy item FROM './simulated_data/items.csv' DELIMITER ',' CSV;
+\copy machine FROM './simulated_data/machines.csv' DELIMITER ',' CSV;
+\copy payment_type FROM './simulated_data/payment_types.csv' DELIMITER ',' CSV;
