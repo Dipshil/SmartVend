@@ -100,6 +100,7 @@ CREATE VIEW logs AS (
 CREATE VIEW stock_logs AS (
 	SELECT 
 		c.id,
+		c.month,
 		a.location,
 		b.item_name
 	FROM 
@@ -123,6 +124,7 @@ GRANT ALL PRIVILEGES ON TABLE machine_stock to vend_admin;
 GRANT ALL PRIVILEGES ON TABLE purchase to vend_admin;
 GRANT ALL PRIVILEGES ON TABLE payment_type to vend_admin;
 GRANT ALL PRIVILEGES ON TABLE logs to vend_admin;
+GRANT ALL PRIVILEGES ON TABLE stock_logs to vend_admin;
 GRANT INSERT ON TABLE machine_stock TO vend_machine;
 GRANT INSERT ON TABLE purchase TO vend_machine;
 GRANT SELECT ON TABLE logs to vend_analytics;
