@@ -1,3 +1,7 @@
+.navbar {
+	top:0;
+}
+
 nav.navbar ul {
 	list-style-type: none;
 	margin: 0;
@@ -30,4 +34,35 @@ nav.navbar li a {
 
 nav.navbar li a:hover {
 	background-color: #111;
+}
+
+.sidenav {
+	padding-top:20px;
+	height: 100%; 
+	position: fixed; 
+	z-index: 1; 
+	background-color: #333;
+	overflow-x: hidden;
+}
+
+.sidenav ul {
+	list-style-type: none;
+}
+
+.sidenav li a {
+	float:left;
+	display: block;
+	color: white;
+	text-align: left;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.sidenav li a:hover {
+	background-color: #111;
+}
+
+#chart-container {
+	display:block;
+	padding-left:25%;
 }
