@@ -66,6 +66,12 @@ CREATE TABLE purchase (
 	payment_type_id SERIAL 
 );
 
+CREATE TABLE purchase_prediction (
+	id SERIAL PRIMARY KEY,
+	item_id SERIAL,
+	month INT
+);
+
 CREATE TABLE payment_type (
 	id SERIAL PRIMARY KEY,
 	payment_type_name VARCHAR(40)
@@ -124,6 +130,7 @@ GRANT ALL PRIVILEGES ON TABLE machine_stock to vend_admin;
 GRANT ALL PRIVILEGES ON TABLE purchase to vend_admin;
 GRANT ALL PRIVILEGES ON TABLE payment_type to vend_admin;
 GRANT ALL PRIVILEGES ON TABLE logs to vend_admin;
+GRANT ALL PRIVILEGES ON TABLE purchase_prediction to vend_admin;
 GRANT ALL PRIVILEGES ON TABLE stock_logs to vend_admin;
 GRANT INSERT ON TABLE machine_stock TO vend_machine;
 GRANT INSERT ON TABLE purchase TO vend_machine;
@@ -139,5 +146,7 @@ GRANT SELECT ON TABLE logs to vend_analytics;
 \copy payment_type(payment_type_name) FROM './simulated_data/payment_types.csv' DELIMITER ',' CSV;
 \copy machine_stock(machine_id, item_id, month) FROM './simulated_data/machine_stocks.csv' DELIMITER ',' CSV;
 \copy purchase(item_id, machine_id, timestamp, month, payment_type_id) FROM './simulated_data/purchases.csv' DELIMITER ',' CSV;
+\copy purchase_prediction(item_id, month) FROM './simulated_data/purchase_prediction.csv' DELIMITER ',' CSV;
+
 
 
