@@ -1,4 +1,4 @@
-*.csv
+SQL/VendAPI/*.csv
 *.swp
 
 ###########
