@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
 	revenuePie() {
 
-		var url = 'http://172.26.135.37:3000/analytics/revenue_pie'
+		var url = 'http://localhost:3000/analytics/revenue_pie'
 		this.http.get(url).subscribe(rows => {
 			console.log(rows);
 
