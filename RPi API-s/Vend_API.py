@@ -6,6 +6,7 @@ import time
 from PIL import Image
 import requests
 import ast
+from datetime import datetime
 
 
 class e(Exception):
@@ -14,6 +15,7 @@ class e(Exception):
 API_ENDPOINT = "http://172.26.135.37:3000/api/load"
 
 data = {}
+#cur_date = datetime.now().month
 
 camera = PiCamera()
 camera.resolution = (320,240)
@@ -41,6 +43,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=T
 		try:
 			data = ast.literal_eval(out[0][1])
 			data['machine_id'] = 1
+			data['month'] = 36 #static for testing
 			r = requests.post(url=API_ENDPOINT, data = data)
 			print('sent')
 		except e:
