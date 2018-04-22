@@ -60,7 +60,7 @@ CREATE TABLE purchase (
 	id SERIAL PRIMARY KEY,
 	item_id SERIAL,
 	machine_id SERIAL,
-	timestamp TIMESTAMP,
+	timestamp FLOAT,
 	payment_type_id SERIAL 
 );
 

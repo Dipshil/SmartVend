@@ -1,6 +1,7 @@
 from os.path import isfile
 from filepaths import *
-from timestamp_generator import randomDate
+from timestamp_generator import random_time_gen
+from tqdm import tqdm
 import random
 
 NUM_VENDING_MACHINES = 1017
@@ -58,7 +59,7 @@ def main():
     with open(MACHINE_STOCKS, 'w') as f:
         for machine_id in range(1, NUM_VENDING_MACHINES+1):
             for item_id in range(1, 15):
-                for number_items in range(random.randint(20, 30)):
+                for number_items in range(random.randint(5, 10)):
                     f.write('%s,%s\n' %(machine_id, item_id))
 
     # Create Payment Types
@@ -69,19 +70,15 @@ def main():
 
     # Create Purchases
     with open(PURCHASES, 'w') as f:
+        for item_id in tqdm(range(1, 15)):
+            num = random.randrange(65, 75)
+            mean = random.randrange(0, 24)
+            sd = random.randrange(2, 4)
             for machine_id in range(1, NUM_VENDING_MACHINES+1):
-                for item_id in range(1, 15):
-                    mu = random.randint(-2, 2)
-                    sigma = random.uniform(0, 2)
-                    for date in range(1, 32):
-                        for number_items in range(random.randint(1, 5)):
-                            start = "2018/03/%s 00:00" %date
-                            end = "2018/03/%s 23:59" %date
-                            timestamp = randomDate(start, end, random.gauss(mu, sigma))
-                            payment_type = random.randint(1,3)
-                            f.write('%s,%s,%s,%s\n' %(item_id, machine_id, timestamp, payment_type))
-
-
+                timestamps = random_time_gen(num, mean, sd, low= 0, upp=24)
+                for timestamp in timestamps:
+                    payment_type = random.randint(1,3)
+                    f.write('%s,%s,%s,%s\n' %(item_id, machine_id, timestamp, payment_type))
 
 if __name__ == '__main__':
     main()
