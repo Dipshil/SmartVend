@@ -49,7 +49,8 @@ CREATE TABLE machine (
 CREATE TABLE machine_stock (
 	id SERIAL PRIMARY KEY,
 	machine_id SERIAL,
-	item_id SERIAL
+	item_id SERIAL,
+	month INT
 );
 
 ---------------
@@ -61,6 +62,7 @@ CREATE TABLE purchase (
 	item_id SERIAL,
 	machine_id SERIAL,
 	timestamp FLOAT,
+	month INT,
 	payment_type_id SERIAL 
 );
 
@@ -133,7 +135,7 @@ GRANT SELECT ON TABLE logs to vend_analytics;
 \copy item(item_name, item_type_id, price) FROM './simulated_data/items.csv' DELIMITER ',' CSV;
 \copy machine(location)  FROM './simulated_data/machines.csv' DELIMITER ',' CSV;
 \copy payment_type(payment_type_name) FROM './simulated_data/payment_types.csv' DELIMITER ',' CSV;
-\copy machine_stock(machine_id, item_id) FROM './simulated_data/machine_stocks.csv' DELIMITER ',' CSV;
-\copy purchase(item_id, machine_id, timestamp, payment_type_id) FROM './simulated_data/purchases.csv' DELIMITER ',' CSV;
+\copy machine_stock(machine_id, item_id, month) FROM './simulated_data/machine_stocks.csv' DELIMITER ',' CSV;
+\copy purchase(item_id, machine_id, timestamp, month, payment_type_id) FROM './simulated_data/purchases.csv' DELIMITER ',' CSV;
 
 
