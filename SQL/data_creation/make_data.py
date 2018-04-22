@@ -57,10 +57,11 @@ def main():
 
     # Create Machine Stocks
     with open(MACHINE_STOCKS, 'w') as f:
-        for machine_id in range(1, NUM_VENDING_MACHINES+1):
-            for item_id in range(1, 15):
-                for number_items in range(random.randint(5, 10)):
-                    f.write('%s,%s\n' %(machine_id, item_id))
+        for month in range(1, 12):
+            for machine_id in range(1, NUM_VENDING_MACHINES+1):
+                for item_id in range(1, 15):
+                    for number_items in range(random.randint(20, 30)):
+                        f.write('%s,%s,%s\n' %(machine_id, item_id, month))
 
     # Create Payment Types
     with open(PAYMENT_TYPES, 'w') as f:
@@ -70,15 +71,16 @@ def main():
 
     # Create Purchases
     with open(PURCHASES, 'w') as f:
-        for item_id in tqdm(range(1, 15)):
-            num = random.randrange(65, 75)
-            mean = random.randrange(0, 24)
-            sd = random.randrange(2, 4)
-            for machine_id in range(1, NUM_VENDING_MACHINES+1):
-                timestamps = random_time_gen(num, mean, sd, low= 0, upp=24)
-                for timestamp in timestamps:
-                    payment_type = random.randint(1,3)
-                    f.write('%s,%s,%s,%s\n' %(item_id, machine_id, timestamp, payment_type))
+        for month in range(1, 12):
+            for item_id in tqdm(range(1, 15)):
+                num = random.randrange(10, 20)
+                mean = random.randrange(1, 23) 
+                sd = random.randrange(2, 4)
+                for machine_id in range(1, NUM_VENDING_MACHINES+1):
+                    timestamps = random_time_gen(num, mean, sd, low= 0, upp=24)
+                    for timestamp in timestamps:
+                        payment_type = random.randint(1,3)
+                        f.write('%s,%s,%s,%s,%s\n' %(item_id, machine_id, timestamp, month, payment_type))
 
 if __name__ == '__main__':
     main()
