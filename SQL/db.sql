@@ -95,6 +95,19 @@ CREATE VIEW logs AS (
 		purchase.payment_type_id = payment_type.id
 );
 
+CREATE VIEW stock_logs AS (
+	SELECT 
+		c.id,
+		a.location,
+		b.item_name
+	FROM 
+		machine AS a,  
+		item AS b,
+		machine_stock AS c 
+	WHERE
+		a.id = c.item_id AND 
+		b.id = c.machine_id 
+);
 
 ----------------
 -- PRIVILEGES --

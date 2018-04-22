@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-// Load item into a machine's stock
 router.get('/revenue_pie', function(req, res, next) {
 	var db = req.app.get('db');
 
