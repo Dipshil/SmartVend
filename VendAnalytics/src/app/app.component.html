@@ -1,17 +1,24 @@
+<div id="titlebar">
+</div>
 <nav class="navbar">
 	<ul>
 		<span>SmartVend</span>
-		<li><a>Contact</a></li>
 		<li><a>About</a></li>
+		<li><a>Contact</a></li>
+		<div class="search-container">
+			<select>
+				<option value="month">Month</option>
+				<option value="location">Location</option>
+				<option value="item_name">Item Name</option>
+			</select> 
+			<input type="text" placeholder="Search.." #query type="text">
+			<button type="submit" (click)="search(query.value)"><i class="fa fa-search"></i></button>
+		</div>
 	</ul> 
 </nav>
-<div class="sidenav">
-	<ul>
-		<li><a role="button" (click)="revenuePie()">Revenue</a></li>
-		<li><a role="button" (click)="stockTable()">Stock</a></li>
-		<li><a>Predict</a></li>
-	</ul>
-</div>
 <div id="chart-container">
-	<div id="chart"></div>
+	<div id="pie_chart"></div>
+</div>
+<div id="chart-container-2">
+	<div id="stock_table"></div>
 </div>
