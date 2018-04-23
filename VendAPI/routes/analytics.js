@@ -71,5 +71,4 @@ router.get('/stock_table_by_loc/:loc', function(req, res, next) {
 // Last 2 months data points
 // var q2 = 'select item_name, count(item_name) from purchase, item where month >= 35 and month <= 36 and purchase.item_id = item.id group by item_name;'
 
-
 module.exports = router;

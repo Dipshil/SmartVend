@@ -73,7 +73,6 @@ export class AppComponent implements OnInit {
 
 		});
 	}
-
 	revenuePie() {
 
 		var url = 'http://localhost:3000/analytics/revenue_pie';
@@ -93,7 +92,6 @@ export class AppComponent implements OnInit {
 			var layout = { height: 600, width: 800, paper_bgcolor:'white', margin: { pad: 100 } };
 
 			Plotly.newPlot('pie_chart', data, layout);
-
 		});
 	}
 
