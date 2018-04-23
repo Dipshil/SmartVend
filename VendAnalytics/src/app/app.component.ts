@@ -48,7 +48,6 @@ export class AppComponent implements OnInit {
 				counts.push(rows[row]['count']);
 			};
 
-			console.log(rows);
 			var rows_data = [ months, locations, item_names, counts ];
 
 			var data = [{
@@ -77,7 +76,6 @@ export class AppComponent implements OnInit {
 
 		var url = 'http://localhost:3000/analytics/revenue_pie';
 		this.http.get(url).subscribe(rows => {
-			console.log(rows);
 
 			var values = []
 			var labels = []
@@ -130,8 +128,72 @@ export class AppComponent implements OnInit {
 				}
 			}]
 			
-			var layout = { height: 600, width: 800, paper_bgcolor:'white', margin: { pad: 0 } };
+			var layout = { height: 600, width: 800, paper_bgcolor:'white', margin: { pad: 100 } };
 			Plotly.newPlot('stock_table', data, layout);
+
+		});
+
+	}
+
+	old_histogram() {
+
+		var old_url = 'http://localhost:3000/analytics/old_histogram';
+		this.http.get(old_url).subscribe(rows => {
+
+			var x = [];
+			var y = [];
+			for (var row in rows) {
+				x.push(rows[row]['item_name']);
+				y.push(rows[row]['count']);
+			}
+
+
+			var trace1 = {
+				histfunc: "sum",
+				y: y,
+				x: x,
+				type: "histogram",
+				marker: { color: "#FFB136" },
+				opacity: 0.75,
+				name: "old"
+			};
+
+			var data = [trace1];
+			var layout = { height: 600, width: 800, paper_bgcolor:'white', margin: { pad: 0 } };
+
+			Plotly.newPlot('old_histogram', data, layout);
+
+		});
+
+	}
+
+	new_histogram() {
+
+		var new_url = 'http://localhost:3000/analytics/new_histogram';
+		this.http.get(new_url).subscribe(rows => {
+
+			var x = [];
+			var y = [];
+			for (var row in rows) {
+				x.push(rows[row]['item_name']);
+				y.push(rows[row]['count']);
+			}
+
+
+			var trace1 = {
+				histfunc: "sum",
+				y: y,
+				x: x,
+				type: "histogram",
+				marker: { color: "#FFB136" },
+				opacity: 0.75,
+				name: "new"
+			};
+
+			var data = [trace1];
+			var layout = { height: 600, width: 800, paper_bgcolor:'white', margin: { pad: 0 } };
+
+			Plotly.newPlot('new_histogram', data, layout);
 
 		});
 
@@ -140,5 +202,7 @@ export class AppComponent implements OnInit {
 	ngOnInit() {
 		this.revenuePie();
 		this.stockTable();
+		this.old_histogram();
+		this.new_histogram();
 	}
 }

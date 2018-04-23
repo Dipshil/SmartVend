@@ -91,6 +91,20 @@ nav.navbar .search-container button:hover {
 	padding-right:75px;
 }
 
+#chart-container-3 {
+	float:left;
+	height:100%;
+	padding:25px;
+	padding-left:75px;
+}
+
+#chart-container-4 {
+	float:right;
+	height:100%;
+	padding:25px;
+	padding-right:75px;
+}
+
 #pie_chart {
 	background-color: white;
 	border-radius:8px;
@@ -100,6 +114,22 @@ nav.navbar .search-container button:hover {
 }
 
 #stock_table {
+	background-color: white;
+	border-radius:8px;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
+	overflow:hidden;
+	padding:0;
+}
+
+#old_histogram {
+	background-color: white;
+	border-radius:8px;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
+	overflow:hidden;
+	padding:0;
+}
+
+#new_histogram {
 	background-color: white;
 	border-radius:8px;
 	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);

@@ -56,7 +56,6 @@ router.get('/stock_table_by_loc/:loc', function(req, res, next) {
 
 	var q = "SELECT month, location, item_name, count(item_name) FROM stock_logs WHERE location = '" + loc + "' GROUP BY month, location, item_name ORDER BY month desc;";
 	db.any(q).then(data => {
-		console.log(data);
 		res.json(data);
 	}).catch(err => {
 		console.log(err);
@@ -64,11 +63,36 @@ router.get('/stock_table_by_loc/:loc', function(req, res, next) {
 
 });
 
-// Future data points
-// var q1 = 'select item_name, count(item_name) from purchase_prediction, item where month >= 37 and purchase_prediction.item_id = item.id group by item_name;'
+
+router.get('/old_histogram', function(req, res, next) {
+	var db = req.app.get('db');
+
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+	var q = 'select item_name, count(item_name) from purchase, item where month >= 35 and month <= 36 and purchase.item_id = item.id group by item_name;'
+	db.any(q).then(data => {
+		res.json(data);
+	}).catch(err => {
+		console.log(err);
+	});
+});
+
+
+router.get('/new_histogram', function(req, res, next) {
+	var db = req.app.get('db');
+
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+	var q = 'select item_name, count(item_name) from purchase_prediction, item where month >= 37 and purchase_prediction.item_id = item.id group by item_name;'
+	db.any(q).then(data => {
+		res.json(data);
+	}).catch(err => {
+		console.log(err);
+	});
+});
+
   
-  
-// Last 2 months data points
-// var q2 = 'select item_name, count(item_name) from purchase, item where month >= 35 and month <= 36 and purchase.item_id = item.id group by item_name;'
 
 module.exports = router;
