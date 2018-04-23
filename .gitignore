@@ -1,5 +1,5 @@
 SQL/data_creation/__pycache__
-SQL/simulated_data/*.csv
+*.csv
 *.swp
 
 ###########
