@@ -1,13 +1,16 @@
-from os.path import isfile
-from filepaths import *
-from timestamp_generator import random_time_gen
-from tqdm import tqdm
-from prediction import PurchasePrediction
-from io import StringIO
+import random
 from csv import writer
+from io import StringIO
+from os.path import isfile
+
 import numpy as np
 import pandas as pd
-import random
+from tqdm import tqdm
+
+from filepaths import *
+from prediction import PurchasePrediction
+from time_prob_distribution import TimeProbDist
+from timestamp_generator import random_time_gen
 
 NUM_VENDING_MACHINES = 1017
 
@@ -124,6 +127,16 @@ def main():
         print("Writing to CSV")
         for _, row in purchases.iterrows():
             f.write("%s,%s\n" %(int(row['Item ID']), int(row['Month'])))
+
+    # Purchase distributions by time period
+    with open(PURCHASE_DIST, 'w') as f:
+
+        dist = TimeProbDist()
+        
+        for item_id in tqdm(range(1, 15)):
+            x, y = dist.get_dist(item_id)
+            for x_val, y_val in zip(x, y):
+                f.write("%s,%s,%s\n" %(int(item_id), x_val, y_val))
 
 
 if __name__ == '__main__':
