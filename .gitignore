@@ -1,4 +1,5 @@
-SQL/VendAPI/*.csv
+SQL/data_creation/__pycache__
+SQL/simulated_data/*.csv
 *.swp
 
 ###########
