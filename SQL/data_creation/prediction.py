@@ -66,10 +66,4 @@ class PurchasePrediction:
 
 
 
-
-a = PurchasePrediction()
-a.evaluate_model(0, 1)
-
-
-
             
