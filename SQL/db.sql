@@ -125,6 +125,20 @@ CREATE VIEW stock_logs AS (
 		b.id = c.machine_id 
 );
 
+CREATE VIEW purchase_distribution_logs AS (
+	SELECT
+		a.id,
+		b.item_name,
+		a.item_id,
+		a.timestamp_val,
+		a.density_val
+	FROM 
+		purchase_distribution AS a,
+		item AS b
+	WHERE
+		b.id = a.item_id
+);
+
 ----------------
 -- PRIVILEGES --
 ----------------
