@@ -128,6 +128,9 @@ def main():
         for _, row in purchases.iterrows():
             f.write("%s,%s\n" %(int(row['Item ID']), int(row['Month'])))
 
+        print("Evaluating Model")
+        predictive_model.evaluate_model(start_month = 0, num_test_elements = 1)
+
     # Purchase distributions by time period
     with open(PURCHASE_DIST, 'w') as f:
 
@@ -137,6 +140,7 @@ def main():
             x, y = dist.get_dist(item_id)
             for x_val, y_val in zip(x, y):
                 f.write("%s,%s,%s\n" %(int(item_id), x_val, y_val))
+                
 
 
 if __name__ == '__main__':

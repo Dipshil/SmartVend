@@ -1,0 +1,14 @@
+Item ID: 1, Explained Variation: 1.0 
+Item ID: 2, Explained Variation: 1.0 
+Item ID: 3, Explained Variation: 1.0 
+Item ID: 4, Explained Variation: 1.0 
+Item ID: 5, Explained Variation: 1.0 
+Item ID: 6, Explained Variation: 1.0 
+Item ID: 7, Explained Variation: 1.0 
+Item ID: 8, Explained Variation: 1.0 
+Item ID: 9, Explained Variation: 1.0 
+Item ID: 10, Explained Variation: 1.0 
+Item ID: 11, Explained Variation: 1.0 
+Item ID: 12, Explained Variation: 1.0 
+Item ID: 13, Explained Variation: 1.0 
+Item ID: 14, Explained Variation: 1.0 
