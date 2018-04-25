@@ -7,7 +7,8 @@ router.get('/revenue_pie', function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-	var q = "SELECT item_name, sum(price) FROM logs GROUP BY item_name;";
+	// var q = "SELECT item_name, sum(price) FROM logs GROUP BY item_name;";
+	var q = "SELECT item_name, sum(revenue) as sum FROM item_revenues group by item_name;";
 	db.any(q).then(data => {
 		res.json(data);
 	}).catch(err => {
@@ -38,7 +39,8 @@ router.get('/revenue_pie_by_loc/:loc', function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-	var q = "SELECT item_name, sum(price) FROM logs where location = '" + loc +  "' GROUP BY item_name;";
+	// var q = "SELECT item_name, sum(price) FROM logs where location = '" + loc +  "' GROUP BY item_name;";
+	var q = "SELECT item_name, revenue as sum FROM item_revenues where location = '" + loc + "';";
 	db.any(q).then(data => {
 		res.json(data);
 	}).catch(err => {

@@ -84,6 +84,19 @@ CREATE TABLE payment_type (
 	payment_type_name VARCHAR(40)
 );
 
+
+CREATE TABLE item_revenues AS (
+	SELECT
+		location,
+		item_name,
+		sum(price) as revenue
+	FROM 
+		logs
+	GROUP BY
+		item_name,
+		location
+);
+
 ---------------
 -- ANALYTICS --
 ---------------
@@ -170,7 +183,3 @@ GRANT SELECT ON TABLE logs to vend_analytics;
 \copy purchase(item_id, machine_id, timestamp, month, payment_type_id) FROM './simulated_data/purchases.csv' DELIMITER ',' CSV;
 \copy purchase_prediction(item_id, month) FROM './simulated_data/purchase_prediction.csv' DELIMITER ',' CSV;
 \copy purchase_distribution(item_id, timestamp_val, density_val) FROM './simulated_data/purchase_dist.csv' DELIMITER ',' CSV;
-
-
-
-
