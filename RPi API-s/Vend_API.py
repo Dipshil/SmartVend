@@ -12,11 +12,13 @@ from datetime import datetime
 class e(Exception):
 	pass
 
-API_ENDPOINT = "http://172.26.135.37:3000/api/load"
+API_ENDPOINT = "http://172.26.135.37:3000/api/"
 
 data = {}
 #cur_date = datetime.now().month
-
+#payment_type=get_payment_type() #get seleceted payment type from the machine
+timestamp = datetime.now().hour + (datetime.now().minute/float(60)) + (datetime.now().second/float(3600))
+		   
 camera = PiCamera()
 camera.resolution = (320,240)
 camera.framerate = 32
@@ -41,9 +43,17 @@ for frame in camera.capture_continuous(rawCapture, format="bgr",use_video_port=T
 		continue
 	else:
 		try:
-			data = ast.literal_eval(out[0][1])
+			val = ast.literal_eval(out[0][1])
+			data={}
+			data['item_id']=val['item_id']
 			data['machine_id'] = 1
 			data['month'] = 36 #static for testing
+			if(val[qr_type]='customer'):
+				data['timestamp'] = timestamp
+				data['payment_type'] ='credit' #static for testing
+				API_ENDPOINT = API_ENDPOINT + 'load'
+			else:
+				API_ENDPOINT = API_ENDPOINT + 'purchase'
 			r = requests.post(url=API_ENDPOINT, data = data)
 			print('sent')
 		except e:
