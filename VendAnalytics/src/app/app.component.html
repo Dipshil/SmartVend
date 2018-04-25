@@ -1,40 +1,38 @@
 <div id="titlebar">
+	<img id="logo" src="../assets/images/logo.png"> 
 </div>
 <nav class="navbar">
 	<ul>
 		<span>SmartVend</span>
-		<li><a>About</a></li>
+		<li class="left"><a (click)="dash()">Dashboard</a></li>
+		<li class="left"><a (click)="dist()">Distributions</a></li>
 		<div class="search-container">
-			<input type="text" placeholder="Search.." #query type="text">
+			<input type="text" placeholder="Search.." (keyup.enter)="search(query.value)" #query type="text">
+			<button type="submit" (click)="reset()">Reset</button>
 			<button type="submit" (click)="search(query.value)"><i class="fa fa-search"></i></button>
 		</div>
+		<li class="right"><a>About</a></li>
 	</ul> 
 </nav>
-<div id="chart-container">
-	<div id="pie_chart"></div>
+<div *ngIf="dash_flag">
+	<div id="chart-container"><div id="pie_chart"></div></div>
+	<div id="chart-container-2"><div id="stock_table"></div></div>
+	<div id="chart-container-3"><div id="old_histogram"></div></div>
+	<div id="chart-container-4"><div id="new_histogram"></div></div>
 </div>
-<div id="chart-container-2">
-	<div id="stock_table"></div>
-</div>
-<div id="chart-container-3">
-	<div id="old_histogram"></div>
-</div>
-<div id="chart-container-4">
-	<div id="new_histogram"></div>
-</div>
-<div id="distribution-charts-container">
-	<div id="dist_1"></div>
-	<div id="dist_2"></div>
-	<div id="dist_3"></div>
-	<div id="dist_4"></div>
-	<div id="dist_5"></div>
-	<div id="dist_6"></div>
-	<div id="dist_7"></div>
-	<div id="dist_8"></div>
-	<div id="dist_9"></div>
-	<div id="dist_10"></div>
-	<div id="dist_11"></div>
-	<div id="dist_12"></div>
-	<div id="dist_13"></div>
-	<div id="dist_14"></div>
+<div *ngIf="dist_flag">
+	<div id="dist-container-1" class="dist-container-odd"><div id="dist_1" class="dist_odd"></div></div>
+	<div id="dist-container-2" class="dist-container-odd"><div id="dist_2" class="dist_odd"></div></div>
+	<div id="dist-container-3" class="dist-container-even"><div id="dist_3" class="dist_even"></div></div>
+	<div id="dist-container-4" class="dist-container-even"><div id="dist_4" class="dist_even"></div></div>
+	<div id="dist-container-5" class="dist-container-odd"><div id="dist_5" class="dist_odd"></div></div>
+	<div id="dist-container-6" class="dist-container-odd"><div id="dist_6" class="dist_odd"></div></div>
+	<div id="dist-container-7" class="dist-container-even"><div id="dist_7" class="dist_even"></div></div>
+	<div id="dist-container-8" class="dist-container-even"><div id="dist_8" class="dist_even"></div></div>
+	<div id="dist-container-9" class="dist-container-odd"><div id="dist_9" class="dist_odd"></div></div>
+	<div id="dist-container-10" class="dist-container-odd"><div id="dist_10" class="dist_odd"></div></div>
+	<div id="dist-container-11" class="dist-container-even"><div id="dist_11" class="dist_even"></div></div>
+	<div id="dist-container-12" class="dist-container-even"><div id="dist_12" class="dist_even"></div></div>
+	<div id="dist-container-13" class="dist-container-odd"><div id="dist_13" class="dist_odd"></div></div>
+	<div id="dist-container-14" class="dist-container-odd"><div id="dist_14" class="dist_odd"></div></div>
 </div>

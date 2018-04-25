@@ -93,7 +93,6 @@ router.get('/new_histogram', function(req, res, next) {
 	});
 });
 
-
 router.get('/distribution', function(req, res, next) {
 	var db = req.app.get('db');
 	var item = req.params.item;
@@ -108,6 +107,5 @@ router.get('/distribution', function(req, res, next) {
 		console.log(err);
 	});
 });
-  
 
 module.exports = router;

@@ -10,6 +10,10 @@
 	opacity: 0.8;
 }
 
+#logo {
+	float:center;
+}
+
 .navbar {
 	font-family:Helvetica;
 	position:sticky;
@@ -35,7 +39,11 @@ nav.navbar span {
 	text-decoration: none;
 }
 
-nav.navbar li {
+nav.navbar li.left {
+	float: left;
+}
+
+nav.navbar li.right {
 	float: right;
 }
 
@@ -130,6 +138,36 @@ nav.navbar .search-container button:hover {
 }
 
 #new_histogram {
+	background-color: white;
+	border-radius:8px;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
+	overflow:hidden;
+	padding:0;
+}
+
+.dist-container-odd {
+	float:left;
+	height:100%;
+	padding:25px;
+	padding-left:75px;
+}
+
+.dist-container-even {
+	float:right;
+	height:100%;
+	padding:25px;
+	padding-right:75px;
+}
+
+.dist_odd {
+	background-color: white;
+	border-radius:8px;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
+	overflow:hidden;
+	padding:0;
+}
+
+.dist_even {
 	background-color: white;
 	border-radius:8px;
 	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.6);
