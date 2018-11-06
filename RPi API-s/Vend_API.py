@@ -12,7 +12,7 @@ from datetime import datetime
 class e(Exception):
 	pass
 
-API_ENDPOINT = "http://172.26.135.37:3000/api/"
+API_ENDPOINT = "put Api endpoint here"
 
 data = {}
 #cur_date = datetime.now().month
